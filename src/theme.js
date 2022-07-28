@@ -4,6 +4,7 @@ const theme = {
     textSecondary: '#586069',
     textWhite: '#f2f2f2',
     primary: '#0366d6',
+    background: '#e1e4e8',
     navBackground: '#24292e',
   },
   fontSizes: {
