@@ -6,6 +6,7 @@ const theme = {
     primary: '#0366d6',
     background: '#e1e4e8',
     navBackground: '#24292e',
+    inputBorder: '#d3d3d3',
   },
   fontSizes: {
     body: 14,
