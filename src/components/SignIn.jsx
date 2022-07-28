@@ -1,8 +1,22 @@
 import { Formik } from 'formik';
-import { Pressable, View } from 'react-native';
+import { Pressable, View, StyleSheet } from 'react-native';
 import FormikTextInput from './FormikTextInput';
-
 import Text from './Text';
+import Theme from '../theme';
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    padding: 8,
+  },
+  button: {
+    backgroundColor: Theme.colors.primary,
+    padding: 12,
+    margin: 8,
+    borderRadius: 4,
+    alignItems: 'center',
+  },
+});
 
 const initialValues = {
   login: '',
@@ -11,11 +25,13 @@ const initialValues = {
 
 const SignInForm = ({ onSubmit }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <FormikTextInput name="login" placeholder="Username" />
       <FormikTextInput name="password" placeholder="Password" />
-      <Pressable onPress={onSubmit}>
-        <Text>Login</Text>
+      <Pressable onPress={onSubmit} style={styles.button}>
+        <Text color="textWhite" fontWeight="bold">
+          Sign in
+        </Text>
       </Pressable>
     </View>
   );
