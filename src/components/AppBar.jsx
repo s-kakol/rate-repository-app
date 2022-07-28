@@ -9,16 +9,13 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.colors.navBackground,
     flexDirection: 'row',
   },
-  tab: {
-    padding: 12,
-    flexGrow: 0,
-  },
 });
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <AppBarTab style={styles.tab} label="Repositories" />
+      <AppBarTab label="Repositories" />
+      <AppBarTab label="Sign in" />
     </View>
   );
 };
