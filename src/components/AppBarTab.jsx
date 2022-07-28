@@ -4,7 +4,7 @@ import Text from './Text';
 const AppBarTab = props => {
   return (
     <Pressable style={props.style}>
-      <Text fontWeight="bold" fontSize="subheading" color="textNav">
+      <Text fontWeight="bold" fontSize="subheading" color="textWhite">
         {props.label}
       </Text>
     </Pressable>
