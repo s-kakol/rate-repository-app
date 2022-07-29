@@ -7,6 +7,7 @@ const theme = {
     background: '#e1e4e8',
     navBackground: '#24292e',
     inputBorder: '#d3d3d3',
+    error: '#cc0000',
   },
   fontSizes: {
     body: 14,

@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
   colorTextWhite: {
     color: theme.colors.textWhite,
   },
+  colorTextError: {
+    color: theme.colors.error,
+  },
   colorPrimary: {
     color: theme.colors.primary,
   },
@@ -32,6 +35,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
     color === 'textSecondary' && styles.colorTextSecondary,
     color === 'textWhite' && styles.colorTextWhite,
     color === 'primary' && styles.colorPrimary,
+    color === 'error' && styles.colorTextError,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
     style,
