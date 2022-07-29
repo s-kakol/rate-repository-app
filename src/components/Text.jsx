@@ -1,31 +1,31 @@
 import { Text as NativeText, StyleSheet } from 'react-native';
 
-import theme from '../theme';
+import Theme from '../theme';
 
 const styles = StyleSheet.create({
   text: {
-    color: theme.colors.textPrimary,
-    fontSize: theme.fontSizes.body,
-    fontFamily: theme.fonts.main,
-    fontWeight: theme.fontWeights.normal,
+    color: Theme.colors.textPrimary,
+    fontSize: Theme.fontSizes.body,
+    fontFamily: Theme.fonts.main,
+    fontWeight: Theme.fontWeights.normal,
   },
   colorTextSecondary: {
-    color: theme.colors.textSecondary,
+    color: Theme.colors.textSecondary,
   },
   colorTextWhite: {
-    color: theme.colors.textWhite,
+    color: Theme.colors.textWhite,
   },
   colorTextError: {
-    color: theme.colors.error,
+    color: Theme.colors.error,
   },
   colorPrimary: {
-    color: theme.colors.primary,
+    color: Theme.colors.primary,
   },
   fontSizeSubheading: {
-    fontSize: theme.fontSizes.subheading,
+    fontSize: Theme.fontSizes.subheading,
   },
   fontWeightBold: {
-    fontWeight: theme.fontWeights.bold,
+    fontWeight: Theme.fontWeights.bold,
   },
 });
 
