@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
+import useRepositories from '../hooks/useRepositories';
 
-const URL = 'http://192.168.1.10:5000';
 const styles = StyleSheet.create({
   separator: {
     height: 10,
@@ -12,18 +11,7 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  const [repositories, setRepositories] = useState();
-
-  const fetchRepositories = async () => {
-    const response = await fetch(`${URL}/api/repositories`);
-    const json = await response.json();
-
-    setRepositories(json);
-  };
-
-  useEffect(() => {
-    fetchRepositories();
-  }, []);
+  const { repositories } = useRepositories();
 
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
