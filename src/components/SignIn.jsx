@@ -20,15 +20,15 @@ const styles = StyleSheet.create({
 });
 
 const initialValues = {
-  login: '',
+  username: '',
   password: '',
 };
 
 const validationSchema = yup.object().shape({
-  login: yup
+  username: yup
     .string()
     .min(6, 'Username must be at least 6 characters long')
-    .required('Please enter your login'),
+    .required('Please enter your username'),
   password: yup
     .string()
     .min(6, 'Password must be at least 6 characters long')
@@ -38,7 +38,7 @@ const validationSchema = yup.object().shape({
 const SignInForm = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
-      <FormikTextInput name="login" placeholder="Username" />
+      <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput
         name="password"
         placeholder="Password"
@@ -54,8 +54,8 @@ const SignInForm = ({ onSubmit }) => {
 };
 
 const SignIn = () => {
-  const onSubmit = values => {
-    console.log(`Login: ${values.login}`);
+  const onSubmit = async values => {
+    console.log(`Login: ${values.username}`);
     console.log(`Pass: ${values.password}`);
   };
 
