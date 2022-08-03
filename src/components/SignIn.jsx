@@ -66,7 +66,7 @@ const SignIn = () => {
     const { username, password } = values;
     try {
       await signIn({ username, password });
-      client.resetStore();
+      await client.resetStore();
       navigate('/');
     } catch (e) {
       console.log(e);
