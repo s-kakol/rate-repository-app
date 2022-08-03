@@ -9,7 +9,9 @@ const RepositoryItemDetail = props => {
 
   return (
     <View style={{ alignItems: 'center' }}>
-      <Text fontWeight="bold">{displayValue}</Text>
+      <Text testID={props.name} fontWeight="bold">
+        {displayValue}
+      </Text>
       <Text color="textSecondary">{props.name}</Text>
     </View>
   );
