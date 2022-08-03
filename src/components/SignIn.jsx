@@ -1,6 +1,9 @@
 import { Formik } from 'formik';
 import { Pressable, View, StyleSheet } from 'react-native';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-native';
+import { useApolloClient } from '@apollo/client';
+
 import FormikTextInput from './FormikTextInput';
 import Text from './Text';
 import Theme from '../theme';
@@ -56,12 +59,15 @@ const SignInForm = ({ onSubmit }) => {
 
 const SignIn = () => {
   const [signIn] = useSignIn();
+  const navigate = useNavigate();
+  const client = useApolloClient();
 
   const onSubmit = async values => {
     const { username, password } = values;
     try {
-      const { data } = await signIn({ username, password });
-      console.log(data);
+      await signIn({ username, password });
+      client.resetStore();
+      navigate('/');
     } catch (e) {
       console.log(e);
     }
