@@ -1,7 +1,7 @@
 import { StyleSheet, View, Image } from 'react-native';
-import Theme from '../theme';
+import Theme from '../../theme';
 import RepositoryItemDetail from './RepositoryItemDetail';
-import Text from './Text';
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ repo }) => {
   return (
-    <View style={styles.container}>
+    <View testID="repositoryItem" style={styles.container}>
       <View style={styles.row}>
         <Image style={styles.image} source={{ uri: repo.ownerAvatarUrl }} />
         <View style={styles.mainArea}>
