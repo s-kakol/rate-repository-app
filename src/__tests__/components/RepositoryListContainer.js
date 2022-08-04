@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react-native';
 import RepositoryListContainer from '../../components/RepositoryList/RepositoryListContainer';
+import * as router from 'react-router';
+const mockedUseNavigate = jest.fn();
 
 const repositories = {
   totalCount: 8,
@@ -42,6 +44,12 @@ const repositories = {
 
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
+    beforeEach(() => {
+      jest
+        .spyOn(router, 'useNavigate')
+        .mockImplementation(() => mockedUseNavigate);
+    });
+
     it('renders repository information correctly', () => {
       const { getAllByTestId } = render(
         <RepositoryListContainer repositories={repositories} />
