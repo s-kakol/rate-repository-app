@@ -1,5 +1,6 @@
 import { StyleSheet, View, Image, Pressable } from 'react-native';
 import { useNavigate } from 'react-router-native';
+import * as Linking from 'expo-linking';
 
 import Theme from '../../theme';
 import RepositoryItemDetail from './RepositoryItemDetail';
@@ -54,7 +55,10 @@ const RepositoryItem = ({ singleView, repo }) => {
 
   const renderGithubButton = () => {
     return (
-      <Pressable style={styles.githubBtn} onPress={() => console.log(repo.url)}>
+      <Pressable
+        style={styles.githubBtn}
+        onPress={() => Linking.openURL(repo.url)}
+      >
         <Text color="textWhite" fontWeight="bold">
           Open in Github
         </Text>
