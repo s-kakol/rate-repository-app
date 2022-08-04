@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-import { AUTHENTICATE } from '../grahpql/mutations';
+import { AUTHENTICATE } from '../graphql/mutations';
 import useAuthStorage from './useAuthStorage';
 
 const useSignIn = () => {

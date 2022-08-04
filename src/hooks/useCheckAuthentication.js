@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { CHECK_AUTHENTICATION } from '../grahpql/queries';
+import { CHECK_AUTHENTICATION } from '../graphql/queries';
 
 const useCheckAuthentication = () => {
   const [isSignedIn, setIsSignedIn] = useState();
