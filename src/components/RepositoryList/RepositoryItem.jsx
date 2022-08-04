@@ -1,4 +1,6 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Pressable } from 'react-native';
+import { useNavigate } from 'react-router-native';
+
 import Theme from '../../theme';
 import RepositoryItemDetail from './RepositoryItemDetail';
 import Text from '../Text';
@@ -37,32 +39,55 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: Theme.colors.primary,
   },
+  githubBtn: {
+    margin: 8,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 6,
+    backgroundColor: Theme.colors.primary,
+  },
 });
 
-const RepositoryItem = ({ repo }) => {
+const RepositoryItem = ({ singleView, repo }) => {
+  const navigate = useNavigate();
+
+  const renderGithubButton = () => {
+    return (
+      <Pressable style={styles.githubBtn} onPress={() => console.log(repo.url)}>
+        <Text color="textWhite" fontWeight="bold">
+          Open in Github
+        </Text>
+      </Pressable>
+    );
+  };
+
   return (
-    <View testID="repositoryItem" style={styles.container}>
-      <View style={styles.row}>
-        <Image style={styles.image} source={{ uri: repo.ownerAvatarUrl }} />
-        <View style={styles.mainArea}>
-          <Text fontSize="subheading" fontWeight="bold">
-            {repo.fullName}
-          </Text>
-          <Text style={styles.descriptionBar} color="textSecondary">
-            {repo.description}
-          </Text>
-          <Text style={styles.languageBar} color="textWhite">
-            {repo.language}
-          </Text>
+    <Pressable onPress={() => !singleView && navigate(`/repo/${repo.id}`)}>
+      <View testID="repositoryItem" style={styles.container}>
+        <View style={styles.row}>
+          <Image style={styles.image} source={{ uri: repo.ownerAvatarUrl }} />
+          <View style={styles.mainArea}>
+            <Text fontSize="subheading" fontWeight="bold">
+              {repo.fullName}
+            </Text>
+            <Text style={styles.descriptionBar} color="textSecondary">
+              {repo.description}
+            </Text>
+            <Text style={styles.languageBar} color="textWhite">
+              {repo.language}
+            </Text>
+          </View>
         </View>
+        <View style={styles.detailsArea}>
+          <RepositoryItemDetail value={repo.stargazersCount} name="Stars" />
+          <RepositoryItemDetail value={repo.forksCount} name="Forks" />
+          <RepositoryItemDetail value={repo.reviewCount} name="Reviews" />
+          <RepositoryItemDetail value={repo.ratingAverage} name="Rating" />
+        </View>
+        {singleView && renderGithubButton()}
       </View>
-      <View style={styles.detailsArea}>
-        <RepositoryItemDetail value={repo.stargazersCount} name="Stars" />
-        <RepositoryItemDetail value={repo.forksCount} name="Forks" />
-        <RepositoryItemDetail value={repo.reviewCount} name="Reviews" />
-        <RepositoryItemDetail value={repo.ratingAverage} name="Rating" />
-      </View>
-    </View>
+    </Pressable>
   );
 };
 
