@@ -1,8 +1,8 @@
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
-import Theme from '../theme';
+import Theme from '../../theme';
 import AppBarTab from './AppBarTab';
-import useCheckAuthentication from '../hooks/useCheckAuthentication';
+import useCheckAuthentication from '../../hooks/useCheckAuthentication';
 
 const styles = StyleSheet.create({
   container: {
