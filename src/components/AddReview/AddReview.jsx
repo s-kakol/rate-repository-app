@@ -1,8 +1,33 @@
+import { useMutation } from '@apollo/client';
+import { CREATE_REVIEW } from '../../graphql/mutations';
+import { useNavigate } from 'react-router-native';
+
 import AddReviewContainer from './AddReviewContainer';
 
 const AddReview = () => {
+  const navigate = useNavigate();
+  const [mutate] = useMutation(CREATE_REVIEW, {
+    onCompleted: async data => {
+      const id = await data.createReview.repositoryId;
+      navigate(`/repo/${id}`);
+    },
+  });
+
   const onSubmit = async values => {
-    console.log(values);
+    try {
+      await mutate({
+        variables: {
+          review: {
+            ownerName: values.ownerName,
+            repositoryName: values.repositoryName,
+            rating: +values.rating,
+            text: values.text,
+          },
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return <AddReviewContainer onSubmit={onSubmit} />;
