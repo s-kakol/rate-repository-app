@@ -3,6 +3,7 @@ import { CREATE_REVIEW } from '../../graphql/mutations';
 import { useNavigate } from 'react-router-native';
 
 import AddReviewContainer from './AddReviewContainer';
+import { Alert } from 'react-native';
 
 const AddReview = () => {
   const navigate = useNavigate();
@@ -26,7 +27,12 @@ const AddReview = () => {
         },
       });
     } catch (e) {
-      console.log(e);
+      Alert.alert(null, e.message || 'Something went wrong', [
+        {
+          text: 'OK',
+          style: 'cancel',
+        },
+      ]);
     }
   };
 
