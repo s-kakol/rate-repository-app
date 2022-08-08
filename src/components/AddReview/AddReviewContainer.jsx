@@ -11,14 +11,18 @@ const AddReviewContainer = ({ onSubmit }) => {
     text: '',
   };
 
+  const ratingErrorMessage = 'Please enter a number between 0 and 100';
+
   const validationSchema = yup.object().shape({
     ownerName: yup.string().required('Please enter owner of the repository'),
     repositoryName: yup.string().required('Please enter repository name'),
     rating: yup
       .number()
-      .min(0, 'Rating must be between 0 and 100')
-      .max(100, 'Rating must be between 0 and 100')
-      .integer(),
+      .typeError(ratingErrorMessage)
+      .min(0, ratingErrorMessage)
+      .max(100, ratingErrorMessage)
+      .integer()
+      .required(ratingErrorMessage),
     text: yup.string(),
   });
 
