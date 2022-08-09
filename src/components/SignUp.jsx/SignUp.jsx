@@ -15,11 +15,8 @@ const SignUp = () => {
   const onSubmit = async values => {
     const { username, password } = values;
     try {
-      console.log('BEFORE SIGN UP');
       await signUp({ username, password });
-      console.log('BEFORE SIGN IN');
       await signIn({ username, password });
-      console.log('BEFORE CLIENT RESET');
       await client.resetStore();
       navigate('/');
     } catch (e) {
