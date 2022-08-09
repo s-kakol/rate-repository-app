@@ -25,6 +25,7 @@ const AppBar = () => {
         ) : (
           <AppBarTab path="login" label="Sign in" />
         )}
+        {!isSignedIn && <AppBarTab path="signUp" label="Sign up" />}
       </ScrollView>
     </View>
   );
