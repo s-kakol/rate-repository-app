@@ -51,8 +51,17 @@ describe('RepositoryList', () => {
     });
 
     it('renders repository information correctly', () => {
+      const filterOptions = {
+        value: 'LATEST',
+        order: 'CREATED_AT',
+        direction: 'DESC',
+      };
+
       const { getAllByTestId } = render(
-        <RepositoryListContainer repositories={repositories} />
+        <RepositoryListContainer
+          repositories={repositories}
+          filterOptions={filterOptions}
+        />
       );
 
       const round = number => {
