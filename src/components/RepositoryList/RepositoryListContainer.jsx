@@ -14,6 +14,7 @@ const RepositoryListContainer = ({
   repositories,
   filterOptions,
   setFilterOptions,
+  setSearchKeyword,
 }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -30,6 +31,7 @@ const RepositoryListContainer = ({
         <RepositoryFilterBar
           filterOptions={filterOptions}
           setFilterOptions={setFilterOptions}
+          setSearchKeyword={setSearchKeyword}
         />
       )}
     />
