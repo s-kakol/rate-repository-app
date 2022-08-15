@@ -15,11 +15,16 @@ const RepositoryList = () => {
     setSearchKeyword(keyword);
   }, 1000);
 
-  const { repositories } = useRepositories(
-    filterOptions.order,
-    filterOptions.direction,
-    searchKeyword
-  );
+  const { repositories, fetchMore } = useRepositories({
+    first: 8,
+    order: filterOptions.order,
+    direction: filterOptions.direction,
+    searchKeyword: searchKeyword,
+  });
+
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   return (
     <RepositoryListContainer
@@ -27,6 +32,7 @@ const RepositoryList = () => {
       filterOptions={filterOptions}
       setFilterOptions={setFilterOptions}
       setSearchKeyword={debounceKeyword}
+      onEndReach={onEndReach}
     />
   );
 };

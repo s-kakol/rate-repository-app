@@ -15,6 +15,7 @@ const RepositoryListContainer = ({
   filterOptions,
   setFilterOptions,
   setSearchKeyword,
+  onEndReach,
 }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -27,6 +28,8 @@ const RepositoryListContainer = ({
       renderItem={({ item }) => (
         <RepositoryItem singleView={false} repo={item} />
       )}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
       ListHeaderComponent={() => (
         <RepositoryFilterBar
           filterOptions={filterOptions}
