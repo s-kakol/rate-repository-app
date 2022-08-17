@@ -24,10 +24,14 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
         <Route path="/login" element={<SignIn />} exact />
-        <Route path="/signOut" element={<SignOut />} exact />
-        <Route path="/signUp" element={<SignUp />} exact />
-        <Route path="/repo/:id" element={<RepositorySingleView />} exact />
-        <Route path="/addReview" element={<AddReview />} exact />
+        <Route path="/sign-out" element={<SignOut />} exact />
+        <Route path="/sign-up" element={<SignUp />} exact />
+        <Route
+          path="/repository/:id"
+          element={<RepositorySingleView />}
+          exact
+        />
+        <Route path="/add-review" element={<AddReview />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </View>
