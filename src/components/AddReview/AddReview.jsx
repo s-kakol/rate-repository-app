@@ -10,7 +10,7 @@ const AddReview = () => {
   const [mutate] = useMutation(CREATE_REVIEW, {
     onCompleted: async data => {
       const id = await data.createReview.repositoryId;
-      navigate(`/repo/${id}`);
+      navigate(`/repository/${id}`);
     },
   });
 

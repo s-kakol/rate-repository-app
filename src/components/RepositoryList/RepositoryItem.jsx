@@ -67,7 +67,7 @@ const RepositoryItem = ({ singleView, repo }) => {
   };
 
   return (
-    <Pressable onPress={() => !singleView && navigate(`/repo/${repo.id}`)}>
+    <Pressable onPress={() => !singleView && navigate(`/repository/${repo.id}`)}>
       <View testID="repositoryItem" style={styles.container}>
         <View style={styles.row}>
           <Image style={styles.image} source={{ uri: repo.ownerAvatarUrl }} />
