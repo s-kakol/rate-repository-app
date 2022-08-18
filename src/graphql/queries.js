@@ -33,11 +33,16 @@ export const GET_REPOSITORIES = gql`
 `;
 
 export const GET_REPOSITORY = gql`
-  query ($repositoryId: ID!) {
+  query ($repositoryId: ID!, $first: Int, $after: String) {
     repository(id: $repositoryId) {
       ...RepositoryDetails
-      reviews {
+      reviews(first: $first, after: $after) {
+        totalCount
+        pageInfo {
+          ...PageInfo
+        }
         edges {
+          cursor
           node {
             ...ReviewDetails
           }
@@ -46,6 +51,7 @@ export const GET_REPOSITORY = gql`
     }
   }
   ${REPOSITORY_DETAILS}
+  ${PAGE_INFO}
   ${REVIEW_DETAILS}
 `;
 

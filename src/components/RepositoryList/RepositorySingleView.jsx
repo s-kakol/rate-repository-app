@@ -16,10 +16,14 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositorySingleView = () => {
   const repositoryId = useParams().id;
-  const { repository } = useRepository(repositoryId);
+  const { repository, fetchMore } = useRepository({ repositoryId, first: 2 });
   const reviewNodes = repository
     ? repository.reviews.edges.map(edge => edge.node)
     : [];
+
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   return repository ? (
     <FlatList
@@ -29,6 +33,8 @@ const RepositorySingleView = () => {
       ListHeaderComponent={() => (
         <RepositoryItem singleView={true} repo={repository} />
       )}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   ) : (
     <LoadingIndicator />
