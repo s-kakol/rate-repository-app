@@ -55,7 +55,7 @@ export const GET_REPOSITORY = gql`
   ${REVIEW_DETAILS}
 `;
 
-export const CHECK_AUTHENTICATION = gql`
+export const GET_USER_DETAILS = gql`
   query ($includeReviews: Boolean = false) {
     me {
       id

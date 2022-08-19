@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { CHECK_AUTHENTICATION } from '../graphql/queries';
+import { GET_USER_DETAILS } from '../graphql/queries';
 
 const useCheckAuthentication = (shouldGetReviews = false) => {
-  const [isSignedIn, setIsSignedIn] = useState();
-  const { data, error, loading } = useQuery(CHECK_AUTHENTICATION, {
+  const [userData, setUserData] = useState();
+  const { data, error, loading } = useQuery(GET_USER_DETAILS, {
     variables: {
       includeReviews: shouldGetReviews,
     },
@@ -13,11 +13,11 @@ const useCheckAuthentication = (shouldGetReviews = false) => {
 
   useEffect(() => {
     if (!error && !loading) {
-      setIsSignedIn(data.me);
+      setUserData(data.me);
     }
   }, [data, error, loading]);
 
-  return { isSignedIn };
+  return { userData };
 };
 
 export default useCheckAuthentication;
