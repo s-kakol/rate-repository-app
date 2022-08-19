@@ -16,7 +16,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositorySingleView = () => {
   const repositoryId = useParams().id;
-  const { repository, fetchMore } = useRepository({ repositoryId, first: 2 });
+  const { repository, fetchMore } = useRepository({ repositoryId, first: 5 });
   const reviewNodes = repository
     ? repository.reviews.edges.map(edge => edge.node)
     : [];
