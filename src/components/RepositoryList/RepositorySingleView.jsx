@@ -4,7 +4,7 @@ import { useParams } from 'react-router-native';
 import useRepository from '../../hooks/useRepository';
 import RepositoryItem from './RepositoryItem';
 import LoadingIndicator from '../LoadingIndicator';
-import ReviewItem from './ReviewItem';
+import ReviewItem from '../ReviewItem';
 
 const styles = StyleSheet.create({
   separator: {
