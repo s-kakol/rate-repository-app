@@ -29,7 +29,9 @@ const RepositorySingleView = () => {
     <FlatList
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => (
+        <ReviewItem review={item} isRepositoryView={true} />
+      )}
       ListHeaderComponent={() => (
         <RepositoryItem singleView={true} repo={repository} />
       )}

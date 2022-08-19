@@ -7,6 +7,7 @@ import RepositorySingleView from './components/RepositoryList/RepositorySingleVi
 import SignIn from './components/SignIn';
 import SignOut from './components/SignOut';
 import SignUp from './components/SignUp.jsx/SignUp';
+import UserReviews from './components/UserReviews';
 import Theme from './theme';
 
 const styles = StyleSheet.create({
@@ -26,6 +27,7 @@ const Main = () => {
         <Route path="/login" element={<SignIn />} exact />
         <Route path="/sign-out" element={<SignOut />} exact />
         <Route path="/sign-up" element={<SignUp />} exact />
+        <Route path="/my-reviews" element={<UserReviews />} exact />
         <Route
           path="/repository/:id"
           element={<RepositorySingleView />}

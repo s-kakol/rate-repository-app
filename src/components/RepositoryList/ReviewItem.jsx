@@ -30,8 +30,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, isRepositoryView }) => {
   const date = new Date(review.createdAt).toLocaleDateString();
+  const title = isRepositoryView
+    ? review.user.username
+    : review.repository.fullName;
+
   return (
     <View style={styles.container}>
       <View style={styles.rating}>
@@ -41,7 +45,7 @@ const ReviewItem = ({ review }) => {
       </View>
       <View style={styles.content}>
         <Text fontWeight="bold" fontSize="subheading">
-          {review.user.username}
+          {title}
         </Text>
         <Text color="textSecondary">{date}</Text>
         <Text style={styles.text}>{review.text}</Text>

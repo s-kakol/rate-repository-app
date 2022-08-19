@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { CHECK_AUTHENTICATION } from '../graphql/queries';
 
-const useCheckAuthentication = () => {
+const useCheckAuthentication = (shouldGetReviews = false) => {
   const [isSignedIn, setIsSignedIn] = useState();
   const { data, error, loading } = useQuery(CHECK_AUTHENTICATION, {
+    variables: {
+      includeReviews: shouldGetReviews,
+    },
     fetchPolicy: 'cache-and-network',
   });
 
