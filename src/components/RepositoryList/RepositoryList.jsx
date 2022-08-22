@@ -17,8 +17,8 @@ const RepositoryList = () => {
 
   const { repositories, fetchMore } = useRepositories({
     first: 8,
-    order: filterOptions.order,
-    direction: filterOptions.direction,
+    orderBy: filterOptions.order,
+    orderDirection: filterOptions.direction,
     searchKeyword: searchKeyword,
   });
 
