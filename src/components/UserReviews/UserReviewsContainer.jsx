@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const UserReviewsContainer = ({ user }) => {
+const UserReviewsContainer = ({ user, refetch }) => {
   const navigate = useNavigate();
   const redirectToAddReviewForm = () => {
     navigate('/add-review');
@@ -40,7 +40,7 @@ const UserReviewsContainer = ({ user }) => {
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => (
-        <ReviewItem review={item} isRepositoryView={false} />
+        <ReviewItem review={item} refetch={refetch} isRepositoryView={false} />
       )}
     />
   ) : (

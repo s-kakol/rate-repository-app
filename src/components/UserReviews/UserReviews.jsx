@@ -3,10 +3,10 @@ import LoadingIndicator from '../LoadingIndicator';
 import UserReviewsContainer from './UserReviewsContainer';
 
 const UserReviews = () => {
-  const { userData } = useCheckAuthentication(true);
+  const { userData, refetch } = useCheckAuthentication(true);
 
   return userData ? (
-    <UserReviewsContainer user={userData} />
+    <UserReviewsContainer user={userData} refetch={refetch} />
   ) : (
     <LoadingIndicator />
   );

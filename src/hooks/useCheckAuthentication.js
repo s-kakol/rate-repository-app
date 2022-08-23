@@ -4,7 +4,7 @@ import { GET_USER_DETAILS } from '../graphql/queries';
 
 const useCheckAuthentication = (shouldGetReviews = false) => {
   const [userData, setUserData] = useState();
-  const { data, error, loading } = useQuery(GET_USER_DETAILS, {
+  const { data, error, refetch, loading } = useQuery(GET_USER_DETAILS, {
     variables: {
       includeReviews: shouldGetReviews,
     },
@@ -17,7 +17,7 @@ const useCheckAuthentication = (shouldGetReviews = false) => {
     }
   }, [data, error, loading]);
 
-  return { userData };
+  return { userData, refetch };
 };
 
 export default useCheckAuthentication;

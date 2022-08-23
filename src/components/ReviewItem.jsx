@@ -1,5 +1,7 @@
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable, Alert } from 'react-native';
+import { useNavigate } from 'react-router-native';
 
+import useDeleteReview from '../hooks/useDeleteReview';
 import Text from './Text';
 import Theme from '../theme';
 
@@ -46,19 +48,39 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReviewItem = ({ review, isRepositoryView }) => {
+const ReviewItem = ({ review, refetch, isRepositoryView }) => {
+  const navigate = useNavigate();
+  const [deleteReview] = useDeleteReview();
   const date = new Date(review.createdAt).toLocaleDateString();
   const title = isRepositoryView
     ? review.user.username
     : review.repository.fullName;
 
   const handleRedirectToRepository = () => {
-    console.log(`Redirect to ${review.repository.id}`);
+    navigate(`/repository/${review.repository.id}`);
   };
 
   const handleRepositoryDeletion = () => {
-    console.log(
-      `Alert with delete confirmation of ${review.repository.fullName}`
+    Alert.alert(
+      review.repository.fullName,
+      `Are you sure you want to delete your review?`,
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {}, // Necessary for proper spacing other two buttons
+        {
+          text: 'Delete',
+          onPress: async () => {
+            await deleteReview(review.id);
+            await refetch();
+          },
+        },
+      ],
+      {
+        cancelable: true,
+      }
     );
   };
 
