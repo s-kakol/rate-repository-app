@@ -10,6 +10,7 @@ const theme = {
     navBackground: '#24292e',
     inputBorder: '#d3d3d3',
     error: '#cc0000',
+    lighterRed: '#e60000',
   },
   fontSizes: {
     body: 14,
