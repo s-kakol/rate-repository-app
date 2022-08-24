@@ -1,9 +1,9 @@
-import useCheckAuthentication from '../../hooks/useCheckAuthentication';
+import useUser from '../../hooks/useUser';
 import LoadingIndicator from '../LoadingIndicator';
 import UserReviewsContainer from './UserReviewsContainer';
 
 const UserReviews = () => {
-  const { userData, refetch } = useCheckAuthentication(true);
+  const { userData, refetch } = useUser(true);
 
   return userData ? (
     <UserReviewsContainer user={userData} refetch={refetch} />

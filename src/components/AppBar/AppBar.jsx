@@ -2,7 +2,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import Theme from '../../theme';
 import AppBarTab from './AppBarTab';
-import useCheckAuthentication from '../../hooks/useCheckAuthentication';
+import useUser from '../../hooks/useUser';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const { userData } = useCheckAuthentication();
+  const { userData } = useUser();
 
   return (
     <View style={styles.container}>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USER_DETAILS } from '../graphql/queries';
 
-const useCheckAuthentication = (shouldGetReviews = false) => {
+const useUser = (shouldGetReviews = false) => {
   const [userData, setUserData] = useState();
   const { data, error, refetch, loading } = useQuery(GET_USER_DETAILS, {
     variables: {
@@ -20,4 +20,4 @@ const useCheckAuthentication = (shouldGetReviews = false) => {
   return { userData, refetch };
 };
 
-export default useCheckAuthentication;
+export default useUser;
